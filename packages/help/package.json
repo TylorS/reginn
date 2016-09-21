@@ -1,0 +1,35 @@
+{
+  "name": "@ragnar/help",
+  "version": "0.0.0",
+  "description": "A help command wrapper for Ragnar",
+  "main": "dist/ragnar-help.js",
+  "jsnext:main": "help.js",
+  "module": "help.js",
+  "files": [
+    "dist",
+    "help.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "help"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2",
+    "@ragnar/alias": "^1.0.0",
+    "@ragnar/app": "^1.0.0",
+    "@ragnar/command": "^1.0.0",
+    "@ragnar/run": "^1.0.0",
+    "@ragnar/stream": "^1.0.0"
+  }
+}

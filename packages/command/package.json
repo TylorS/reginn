@@ -1,0 +1,31 @@
+{
+  "name": "@ragnar/command",
+  "version": "0.0.0",
+  "description": "Commands for Ragnar",
+  "main": "dist/ragnar-command.js",
+  "jsnext:main": "command.js",
+  "module": "command.js",
+  "files": [
+    "dist",
+    "command.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "command",
+    "cli"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2"
+  }
+}

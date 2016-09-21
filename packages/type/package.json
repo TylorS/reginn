@@ -1,0 +1,31 @@
+{
+  "name": "@ragnar/type",
+  "version": "0.0.0",
+  "description": "Type information for Ragnar",
+  "main": "dist/ragnar-type.js",
+  "jsnext:main": "type.js",
+  "module": "type.js",
+  "files": [
+    "dist",
+    "type.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "type",
+    "cli",
+    "command",
+    "line",
+    "application"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme"
+}

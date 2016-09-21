@@ -1,0 +1,34 @@
+{
+  "name": "@ragnar/flag",
+  "version": "0.0.0",
+  "description": "Flags for Ragnar",
+  "main": "dist/ragnar-flag.js",
+  "jsnext:main": "flag.js",
+  "module": "flag.js",
+  "files": [
+    "dist",
+    "flag.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "flag",
+    "cli",
+    "command",
+    "line",
+    "application"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2"
+  }
+}

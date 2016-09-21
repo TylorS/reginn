@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/type",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Type information for Ragnar",
   "main": "dist/ragnar-type.js",
   "jsnext:main": "type.js",

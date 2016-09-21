@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/alias",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Aliases For Ragnar Command Line Applications",
   "main": "dist/ragnar-alias.js",
   "jsnext:main": "alias.js",

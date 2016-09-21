@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/desc",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Description for Ragnar ",
   "main": "dist/ragnar-desc.js",
   "jsnext:main": "desc.js",

@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/flag",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Flags for Ragnar",
   "main": "dist/ragnar-flag.js",
   "jsnext:main": "flag.js",

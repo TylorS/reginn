@@ -1,0 +1,31 @@
+{
+  "name": "@ragnar/callback",
+  "version": "0.0.0",
+  "description": "Callback handler for Ragnar",
+  "main": "dist/ragnar-callback.js",
+  "jsnext:main": "callback.js",
+  "module": "callback.js",
+  "files": [
+    "dist",
+    "callback.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "handler",
+    "callback"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2"
+  }
+}

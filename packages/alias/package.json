@@ -1,0 +1,33 @@
+{
+  "name": "@ragnar/alias",
+  "version": "0.0.0",
+  "description": "Aliases For Ragnar Command Line Applications",
+  "main": "dist/ragnar-alias.js",
+  "jsnext:main": "alias.js",
+  "module": "alias.js",
+  "typings": "alias.d.ts",
+  "files": [
+    "dist",
+    "alias.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "cli",
+    "command",
+    "line",
+    "application",
+    "alias",
+    "aliases"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme"
+}

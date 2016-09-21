@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/callback",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Callback handler for Ragnar",
   "main": "dist/ragnar-callback.js",
   "jsnext:main": "callback.js",

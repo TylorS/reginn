@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/promise",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Promise handler for Ragnar",
   "main": "dist/ragnar-promise.js",
   "jsnext:main": "promise.js",

@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/help",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A help command wrapper for Ragnar",
   "main": "dist/ragnar-help.js",
   "jsnext:main": "help.js",

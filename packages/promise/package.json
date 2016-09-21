@@ -1,0 +1,36 @@
+{
+  "name": "@ragnar/promise",
+  "version": "0.0.0",
+  "description": "Promise handler for Ragnar",
+  "main": "dist/ragnar-promise.js",
+  "jsnext:main": "promise.js",
+  "module": "promise.js",
+  "files": [
+    "dist",
+    "promise.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "handler",
+    "asPromise",
+    "promise",
+    "cli",
+    "command",
+    "line",
+    "application"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2"
+  }
+}

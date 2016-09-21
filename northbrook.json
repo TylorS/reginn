@@ -1,0 +1,18 @@
+{
+  "packages": [
+    "packages/alias",
+    "packages/app",
+    "packages/callback",
+    "packages/command",
+    "packages/desc",
+    "packages/flag",
+    "packages/promise",
+    "packages/run",
+    "packages/stream",
+    "packages/type",
+    "packages/help",
+    "packages/ragnar"
+  ],
+  "plugins": [ "eslint" ],
+  "eslint": {}
+}

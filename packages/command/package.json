@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/command",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Commands for Ragnar",
   "main": "dist/ragnar-command.js",
   "jsnext:main": "command.js",

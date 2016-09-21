@@ -1,0 +1,37 @@
+{
+  "name": "@ragnar/stream",
+  "version": "0.0.0",
+  "description": "Stream Handler for Ragnar",
+  "main": "dist/ragnar-stream.js",
+  "jsnext:main": "stream.js",
+  "module": "stream.js",
+  "files": [
+    "dist",
+    "stream.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "stream",
+    "handler",
+    "most.js",
+    "cli",
+    "command",
+    "line",
+    "applicaton"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2",
+    "most": "^1.0.3"
+  }
+}

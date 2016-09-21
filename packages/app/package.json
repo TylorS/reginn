@@ -1,0 +1,35 @@
+{
+  "name": "@ragnar/app",
+  "version": "0.0.0",
+  "description": "Application Container for Ragnar",
+  "main": "dist/ragnar-app.js",
+  "jsnext:main": "app.js",
+  "module": "app.js",
+  "files": [
+    "dist",
+    "app.js"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylors/ragnar.git"
+  },
+  "keywords": [
+    "ragnar",
+    "application",
+    "app",
+    "cli",
+    "command",
+    "line",
+    "application"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylors/ragnar/issues"
+  },
+  "homepage": "https://github.com/tylors/ragnar#readme",
+  "dependencies": {
+    "@northbrook/util": "^1.0.2"
+  }
+}

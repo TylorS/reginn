@@ -1,6 +1,6 @@
 {
   "name": "@ragnar/run",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Run your Ragnar Applications",
   "main": "dist/ragnar-run.js",
   "jsnext:main": "run..js",

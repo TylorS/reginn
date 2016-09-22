@@ -1,19 +1,19 @@
-declare module "ragnar" {
-  export * from "@ragnar/alias";
-  export * from "@ragnar/app";
-  export * from "@ragnar/callback";
-  export * from "@ragnar/command";
-  export * from "@ragnar/desc";
-  export * from "@ragnar/flag";
-  export * from "@ragnar/help";
-  export * from "@ragnar/promise";
-  export * from "@ragnar/run";
-  export * from "@ragnar/stream";
-  export * from "@ragnar/type";
+declare module "reginn" {
+  export * from "@reginn/alias";
+  export * from "@reginn/app";
+  export * from "@reginn/callback";
+  export * from "@reginn/command";
+  export * from "@reginn/desc";
+  export * from "@reginn/flag";
+  export * from "@reginn/help";
+  export * from "@reginn/promise";
+  export * from "@reginn/run";
+  export * from "@reginn/stream";
+  export * from "@reginn/type";
 }
 
-declare module "@ragnar/alias" {
-  import { ValidTypes } from "@ragnar/type";
+declare module "@reginn/alias" {
+  import { ValidTypes } from "@reginn/type";
   export type Alias = {
     type: "alias",
     flagType: ValidTypes,
@@ -23,9 +23,9 @@ declare module "@ragnar/alias" {
   export function alias (name: string, aliasedName?: string): Alias;
 }
 
-declare module "@ragnar/app" {
-  import { Command, CommandFlags } from "@ragnar/command";
-  import { Flag } from "@ragnar/flag";
+declare module "@reginn/app" {
+  import { Command, CommandFlags } from "@reginn/command";
+  import { Flag } from "@reginn/flag";
 
   export type App = {
     type: "app",
@@ -38,10 +38,10 @@ declare module "@ragnar/app" {
   export function app(...definitions: Array<App | Command | Flag>): App;
 }
 
-declare module "@ragnar/command" {
-  import { Alias } from "@ragnar/alias";
-  import { App } from "@ragnar/app";
-  import { Flag } from "@ragnar/flag";
+declare module "@reginn/command" {
+  import { Alias } from "@reginn/alias";
+  import { App } from "@reginn/app";
+  import { Flag } from "@reginn/flag";
 
   export type CommandFlags = {
     alias?: Array< { [name: string]: string } >,
@@ -67,16 +67,16 @@ declare module "@ragnar/command" {
   export function command(...definitions: Array<Alias | Flag | Command>): Command;
 }
 
-declare module "@ragnar/desc" {
+declare module "@reginn/desc" {
   export type Description = {
     type: "desc",
     value: string
   }
 }
 
-declare module "@ragnar/flag" {
-  import { Alias } from "@ragnar/alias";
-  import { Type, ValidTypes } from "@ragnar/type";
+declare module "@reginn/flag" {
+  import { Alias } from "@reginn/alias";
+  import { Type, ValidTypes } from "@reginn/type";
 
   export type Flag = {
     type: "flag",
@@ -87,22 +87,22 @@ declare module "@ragnar/flag" {
   export function flag (...defintions: Array<Type | Alias>): Flag;
 }
 
-declare module "@ragnar/help" {
-  import { App } from "@ragnar/app";
-  import { Command } from "@ragnar/command";
-  import { Flag } from "@ragnar/flag";
+declare module "@reginn/help" {
+  import { App } from "@reginn/app";
+  import { Command } from "@reginn/command";
+  import { Flag } from "@reginn/flag";
 
   export function help(name: string, ...definitions: Array<App | Command | Flag>): App;
 }
 
-declare module "@ragnar/run" {
-  import { App } from "@ragnar/app";
-  import { Command } from "@ragnar/command";
+declare module "@reginn/run" {
+  import { App } from "@reginn/app";
+  import { Command } from "@reginn/command";
 
   export function run(argv: string[], app: App): { commands: Array<Command>, args: Array<string>, options: Object };
 }
 
-declare module "@ragnar/type" {
+declare module "@reginn/type" {
   export type ValidTypes = "string" | "boolean"
 
   export type Type = { type: "type", value: ValidTypes }
@@ -110,20 +110,20 @@ declare module "@ragnar/type" {
   export function type (value: ValidTypes): Type;
 }
 
-declare module "@ragnar/callback" {
-  import { Command, Handler } from "@ragnar/command";
+declare module "@reginn/callback" {
+  import { Command, Handler } from "@reginn/command";
   export function withCallback(cmd: Command, fn: Handler): void;
 
 }
 
-declare module "@ragnar/promise" {
-  import { Command, HandlerOption } from "@ragnar/command";
+declare module "@reginn/promise" {
+  import { Command, HandlerOption } from "@reginn/command";
 
   export function asPromise(cmd: Command): Promise<HandlerOption>;
 }
 
-declare module "@ragnar/stream" {
-  import { Command, HandlerOption } from "@ragnar/command";
+declare module "@reginn/stream" {
+  import { Command, HandlerOption } from "@reginn/command";
   import { Stream } from "most";
 
   export function asStream(cmd: Command): Stream<HandlerOption>;

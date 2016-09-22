@@ -11,7 +11,7 @@
     "packages/stream",
     "packages/type",
     "packages/help",
-    "packages/ragnar"
+    "packages/reginn"
   ],
   "plugins": [ "eslint" ],
   "eslint": {}

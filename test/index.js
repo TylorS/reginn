@@ -4,9 +4,9 @@ import sinon from 'sinon'
 import { colors } from '@northbrook/util'
 
 import { alias, type, flag, desc, command, app, run,
-         withCallback, asPromise, asStream, help } from '../packages/ragnar/ragnar'
+         withCallback, asPromise, asStream, help } from '../packages/reginn/reginn'
 
-describe('ragnar', () => {
+describe('reginn', () => {
   describe('alias', () => {
     it('should return an alias Object', () => {
       const x = alias('test', 't')

@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "ragnar",
+  "name": "reginn",
   "version": "0.0.0",
   "description": "Composable Command Line Applications",
-  "main": "packages/ragnar/dist/ragnar.js",
+  "main": "packages/reginn/dist/reginn.js",
   "files": [ "lib", "src", "type-definitions" ],
   "scripts": {
     "clean": "northbrook exec -- ../../node_modules/.bin/rimraf dist node_modules && rimraf node_modules",
@@ -15,9 +15,9 @@
     "commit": "northbrook commit",
     "release": "northbrook release",
     "preversion": "npm run build",
-    "postinstall": "northbrook exec --exclude packages/help,packages/ragnar -- npm install && npm run build"
+    "postinstall": "northbrook exec --exclude packages/help,packages/reginn -- npm install && npm run build"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/northbrookjs/ragnar.git" },
+  "repository": { "type": "git", "url": "git+https://github.com/northbrookjs/reginn.git" },
   "keywords": [
     "northbrook",
     "command",
@@ -30,12 +30,12 @@
     "reactive",
     "observable",
     "most.js",
-    "ragnar"
+    "reginn"
   ],
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
-  "bugs": { "url": "https://github.com/northbrookjs/ragnar/issues" },
-  "homepage": "https://github.com/northbrookjs/ragnar#readme",
+  "bugs": { "url": "https://github.com/northbrookjs/reginn/issues" },
+  "homepage": "https://github.com/northbrookjs/reginn#readme",
   "config": {
     "ghooks": { "commit-msg": "node ./node_modules/.bin/validate-commit-msg" },
     "validate-commit-msg": { "types": "@northbrook/commit-types" }

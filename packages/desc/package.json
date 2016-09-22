@@ -1,8 +1,8 @@
 {
-  "name": "@ragnar/desc",
+  "name": "@reginn/desc",
   "version": "1.0.0",
-  "description": "Description for Ragnar ",
-  "main": "dist/ragnar-desc.js",
+  "description": "Description for Reginn ",
+  "main": "dist/reginn-desc.js",
   "jsnext:main": "desc.js",
   "module": "desc.js",
   "files": [
@@ -12,12 +12,12 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylors/ragnar.git"
+    "url": "git+https://github.com/tylors/reginn.git"
   },
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tylors/ragnar/issues"
+    "url": "https://github.com/tylors/reginn/issues"
   },
-  "homepage": "https://github.com/tylors/ragnar#readme"
+  "homepage": "https://github.com/tylors/reginn#readme"
 }

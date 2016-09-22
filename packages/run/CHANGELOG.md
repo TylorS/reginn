@@ -4,7 +4,7 @@
 
 ## Breaking Changes
 
-- feat(run): Run your applications [f3087257](https://github.com/TylorS/ragnar/commits/f3087257f01d1695201f17f5bea252d4c0009016)
+- feat(run): Run your applications [f3087257](https://github.com/TylorS/reginn/commits/f3087257f01d1695201f17f5bea252d4c0009016)
 
 
 

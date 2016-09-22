@@ -1,9 +1,9 @@
 import { map, filter, concat } from '@northbrook/util'
-import { app } from '@ragnar/app'
-import { command } from '@ragnar/command'
-import { alias } from '@ragnar/alias'
-import { run } from '@ragnar/run'
-import { asStream } from '@ragnar/stream'
+import { app } from '@reginn/app'
+import { command } from '@reginn/command'
+import { alias } from '@reginn/alias'
+import { run } from '@reginn/run'
+import { asStream } from '@reginn/stream'
 
 export function help (name, ...definitions) {
   if (typeof name !== 'string') {

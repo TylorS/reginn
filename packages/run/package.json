@@ -1,8 +1,8 @@
 {
-  "name": "@ragnar/run",
+  "name": "@reginn/run",
   "version": "1.0.0",
-  "description": "Run your Ragnar Applications",
-  "main": "dist/ragnar-run.js",
+  "description": "Run your Reginn Applications",
+  "main": "dist/reginn-run.js",
   "jsnext:main": "run..js",
   "module": "run.js",
   "files": [
@@ -12,18 +12,18 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TylorS/ragnar.git"
+    "url": "git+https://github.com/TylorS/reginn.git"
   },
   "keywords": [
-    "ragnar",
+    "reginn",
     "run"
   ],
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TylorS/ragnar/issues"
+    "url": "https://github.com/TylorS/reginn/issues"
   },
-  "homepage": "https://github.com/TylorS/ragnar#readme",
+  "homepage": "https://github.com/TylorS/reginn#readme",
   "dependencies": {
     "@northbrook/util": "^1.0.2",
     "minimist": "^1.2.0"

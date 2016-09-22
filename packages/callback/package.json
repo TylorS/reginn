@@ -1,8 +1,8 @@
 {
-  "name": "@ragnar/callback",
+  "name": "@reginn/callback",
   "version": "1.0.0",
-  "description": "Callback handler for Ragnar",
-  "main": "dist/ragnar-callback.js",
+  "description": "Callback handler for Reginn",
+  "main": "dist/reginn-callback.js",
   "jsnext:main": "callback.js",
   "module": "callback.js",
   "files": [
@@ -12,19 +12,19 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylors/ragnar.git"
+    "url": "git+https://github.com/tylors/reginn.git"
   },
   "keywords": [
-    "ragnar",
+    "reginn",
     "handler",
     "callback"
   ],
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tylors/ragnar/issues"
+    "url": "https://github.com/tylors/reginn/issues"
   },
-  "homepage": "https://github.com/tylors/ragnar#readme",
+  "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
     "@northbrook/util": "^1.0.2"
   }

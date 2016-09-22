@@ -4,7 +4,7 @@
 
 ## Breaking Changes
 
-- feat(flag): Add cli option flags [dc61b31b](https://github.com/tylors/ragnar/commits/dc61b31b88307c96b44390237a27f5b779544e66)
+- feat(flag): Add cli option flags [dc61b31b](https://github.com/tylors/reginn/commits/dc61b31b88307c96b44390237a27f5b779544e66)
 
 
 

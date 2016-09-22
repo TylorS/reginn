@@ -1,17 +1,17 @@
-# Ragnar
+# Reginn
 
 > Composable Command Line Applications
 
-Ragnar helps you conquer the world of command line applications functionally.
+Reginn helps you conquer the world of command line applications functionally.
 
-Ragnar empowers you with simple functions to implement complex command-line
+Reginn empowers you with simple functions to implement complex command-line
 applications with expressive code and ease. By sandboxing side effects into
 tightly-controlled areas of your application, your code will become easy to
 read, reason about, and test.
 
-## Why Ragnar?
+## Why Reginn?
 
-Ragnar was built to eliminate the crutch on monolithic imperative APIs to work
+Reginn was built to eliminate the crutch on monolithic imperative APIs to work
 with the command line.
 
 Leading alternatives—such as commander.js—are both largely unmaintained and
@@ -22,14 +22,14 @@ Commander also forces the intermixing of where you declare your application’s
 intent and where side effects exist that leads to poor separation of concerns
 and testability.
 
-Ragnar is laser-focused to create small, testable functions that allow you to
-build you command line applications with assurances not found elsewhere. Ragnar
+Reginn is laser-focused to create small, testable functions that allow you to
+build you command line applications with assurances not found elsewhere. Reginn
 introduces zero new syntaxes to your application and no new concepts, since you
 already know functions.
 
 ## This is for me!
 ```sh
-npm install --save ragnar
+npm install --save reginn
 
 # Do awesome things!
 ```
@@ -59,7 +59,7 @@ First we want to define how our application can process `-o new/path/to/file`
 The code to do this is
 
 ```js
-import { flag, alias } from 'ragnar'
+import { flag, alias } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'))
 ```
@@ -74,7 +74,7 @@ First we create a new [`Alias`](#alias). An alias is a low-level type designed
 to associate other types with a name and optionally an abbreviation to that
 name. We do that here by calling `alias('output', 'o')`.
 
-Secondly we wrap that alias inside of Ragnar's `flag()` function. This creates
+Secondly we wrap that alias inside of Reginn's `flag()` function. This creates
 our second type introduced here: [`Flag`](#flag). A Flag is mechanism for
 creating options that change or define the behavior of your applications.
 
@@ -94,7 +94,7 @@ Next we want to be able to describe the command `build` that accepts these
 flags. We are going to introduce a new type.
 
 ```js
-import { command } from 'ragnar'
+import { command } from 'reginn'
 
 const buildCommand = command(alias('build'), inputFlag, outputFlag)
 ```
@@ -107,13 +107,13 @@ side effects.
 
 #### Sandboxing Side-Effects
 
-Here we are going to perform our applications sole purpose. Ragnar has a few
+Here we are going to perform our applications sole purpose. Reginn has a few
 functions to create side-effects but here we are going to use a `Promise`.
 
 ```js
 import { readFile, writeFile } from 'fs'
 
-import { asPromise } from 'ragnar'
+import { asPromise } from 'reginn'
 
 asPromise(buildCommand).then(({ args, options }) => {
   // lets read our input file
@@ -160,7 +160,7 @@ The last thing we need to do is run it!
 The code to do so is
 
 ```js
-import { run } from 'ragnar'
+import { run } from 'reginn'
 
 run(buildCommand)
 ```
@@ -169,7 +169,7 @@ This is all we need to implement the API we set out to describe. Here is the ent
 application.
 
 ```js
-import { command, flag, alias, run, asPromise } from 'ragnar'
+import { command, flag, alias, run, asPromise } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'))
 const inputFlag = flag(alias('input', 'i'))
@@ -190,7 +190,7 @@ asPromise(buildCommand).then(({ args, options }) => {
 run(buildCommand)
 ```
 
-At this point I hope you now understand the core concepts of what Ragnar is
+At this point I hope you now understand the core concepts of what Reginn is
 trying to do, and what it is capable of. Thank you for taking the time to read
 this and please open an issue for suggestions and comments!
 
@@ -200,7 +200,7 @@ this and please open an issue for suggestions and comments!
 
 ### Types
 
-All of the types used by Ragnar are simple objects exposed by functions of the
+All of the types used by Reginn are simple objects exposed by functions of the
 same lowercased name, which are described above.
 
 #### Alias
@@ -221,7 +221,7 @@ type Alias = {
 **Example:**
 
 ```js
-import { alias } from 'ragnar'
+import { alias } from 'reginn'
 
 alias('name')
 alias('name', 'aliasToName')
@@ -237,7 +237,7 @@ a parent type. Acceptable parent types are `Flag` and `Command`.
 **Example:**
 
 ```js
-import { desc } from 'ragnar'
+import { desc } from 'reginn'
 
 desc('This is what this is about')
 ```
@@ -258,7 +258,7 @@ type Type = {
 **Example:**
 
 ```js
-import { type } from 'ragnar'
+import { type } from 'reginn'
 
 type('boolean')
 ```
@@ -280,7 +280,7 @@ type Flag = {
 
 **Example:**
 ```js
-import { flag, type, alias } from 'ragnar'
+import { flag, type, alias } from 'reginn'
 
 flag(type('boolean'), alias('example'))
 ```
@@ -337,7 +337,7 @@ type HandlerOption = {
 **Example:**
 
 ```js
-import { command, flag, alias } from 'ragnar'
+import { command, flag, alias } from 'reginn'
 run
 command(flag(alias('only'), alias('test'))
 ```
@@ -371,7 +371,7 @@ export type App = {
 **Example: **
 
 ```js
-import { app, command, alias } from 'ragnar'
+import { app, command, alias } from 'reginn'
 
 const gitApp = app(command(alias('git')))
 
@@ -393,7 +393,7 @@ of strings allows for you to explicitly define what is parsed by the application
 which is immensely useful for testing.
 
 ```js
-import { run } from 'ragnar'
+import { run } from 'reginn'
 
 run(application)
 ```
@@ -406,7 +406,7 @@ Handlers are the mechanisms for performing side-effects from commands.
 #### `asPromise(cmd: Command): Promise<HandlerOption | App>`
 
 ```js
-import { asPromise } from 'ragnar'
+import { asPromise } from 'reginn'
 
 asPromise(command).then(({ args, options }) => {
   // do stuff
@@ -418,7 +418,7 @@ asPromise(command).then(({ args, options }) => {
 The `Stream` type being referred to here is a [most.js](https://gitub.com/cujojs/most) Stream.
 
 ```js
-import { asStream } from 'ragnar'
+import { asStream } from 'reginn'
 
 asStream(command).observe(({ args, options }) => {
   // do stuff
@@ -428,7 +428,7 @@ asStream(command).observe(({ args, options }) => {
 #### `withCallback(cmd: Command, callback: (input: HandlerOption | App) => any): void`
 
 ```js
-import { withCallback } from 'ragnar'
+import { withCallback } from 'reginn'
 
 withCallback(commad, ({ args, options }) => {
   // do stuff
@@ -446,7 +446,7 @@ and print out how to use your application.
 **example**
 
 ```js
-import { help } from 'ragnar'
+import { help } from 'reginn'
 
 help('myApp', ....)
 ```

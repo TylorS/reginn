@@ -1,8 +1,8 @@
 {
-  "name": "@ragnar/flag",
+  "name": "@reginn/flag",
   "version": "1.0.0",
-  "description": "Flags for Ragnar",
-  "main": "dist/ragnar-flag.js",
+  "description": "Flags for Reginn",
+  "main": "dist/reginn-flag.js",
   "jsnext:main": "flag.js",
   "module": "flag.js",
   "files": [
@@ -12,10 +12,10 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylors/ragnar.git"
+    "url": "git+https://github.com/tylors/reginn.git"
   },
   "keywords": [
-    "ragnar",
+    "reginn",
     "flag",
     "cli",
     "command",
@@ -25,9 +25,9 @@
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tylors/ragnar/issues"
+    "url": "https://github.com/tylors/reginn/issues"
   },
-  "homepage": "https://github.com/tylors/ragnar#readme",
+  "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
     "@northbrook/util": "^1.0.2"
   }

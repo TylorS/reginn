@@ -1,8 +1,8 @@
 {
-  "name": "@ragnar/stream",
+  "name": "@reginn/stream",
   "version": "1.0.0",
-  "description": "Stream Handler for Ragnar",
-  "main": "dist/ragnar-stream.js",
+  "description": "Stream Handler for Reginn",
+  "main": "dist/reginn-stream.js",
   "jsnext:main": "stream.js",
   "module": "stream.js",
   "files": [
@@ -12,10 +12,10 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylors/ragnar.git"
+    "url": "git+https://github.com/tylors/reginn.git"
   },
   "keywords": [
-    "ragnar",
+    "reginn",
     "stream",
     "handler",
     "most.js",
@@ -27,9 +27,9 @@
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tylors/ragnar/issues"
+    "url": "https://github.com/tylors/reginn/issues"
   },
-  "homepage": "https://github.com/tylors/ragnar#readme",
+  "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
     "@northbrook/util": "^1.0.2",
     "most": "^1.0.3"

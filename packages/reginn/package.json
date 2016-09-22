@@ -1,13 +1,13 @@
 {
-  "name": "@reginn/help",
+  "name": "reginn",
   "version": "1.0.0",
-  "description": "A help command wrapper for Reginn",
-  "main": "dist/reginn-help.js",
-  "jsnext:main": "help.js",
-  "module": "help.js",
+  "description": "Composable Command Line Applications",
+  "main": "dist/reginn.js",
+  "jsnext:main": "reginn.js",
+  "module": "reginn.js",
   "files": [
     "dist",
-    "help.js"
+    "reginn.js"
   ],
   "scripts": {},
   "repository": {
@@ -16,7 +16,13 @@
   },
   "keywords": [
     "reginn",
-    "help"
+    "composable",
+    "functional",
+    "command",
+    "line",
+    "applications",
+    "cli",
+    "reactive"
   ],
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
@@ -25,11 +31,16 @@
   },
   "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
-    "@northbrook/util": "^1.0.2",
     "@reginn/alias": "^1.0.0",
     "@reginn/app": "^1.0.0",
+    "@reginn/callback": "^1.0.0",
     "@reginn/command": "^1.0.0",
+    "@reginn/desc": "^1.0.0",
+    "@reginn/flag": "^1.0.0",
+    "@reginn/help": "^1.0.0",
+    "@reginn/promise": "^1.0.0",
     "@reginn/run": "^1.0.0",
-    "@reginn/stream": "^1.0.0"
+    "@reginn/stream": "^1.0.0",
+    "@reginn/type": "^1.0.0"
   }
 }

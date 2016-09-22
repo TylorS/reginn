@@ -14,8 +14,8 @@ read, reason about, and test.
 Reginn was built to eliminate the crutch on monolithic imperative APIs to work
 with the command line.
 
-Leading alternatives—such as commander.js—are both largely unmaintained and
-feature large imperative classes, which are bad for reusability. Commander
+Leading alternatives are both largely unmaintained and
+feature large imperative classes, which are bad for reusability. Many of them
 introduces many new syntaxes that you have to learn and all are based around
 the way you format strings. As you know, that is a recipe for disaster.
 Commander also forces the intermixing of where you declare your application’s
@@ -44,9 +44,9 @@ that reads an input file, and writes it somewhere else. Easy.
 The end result we're looking for is an application we can use like this
 
 ```sh
-node ./cli.js build -i path/to/file -o new/path/to/file
+node ./cli.js move -i path/to/file -o new/path/to/file
 # without abbreviation
-node ./cli.js build --input path/to/file --output new/path/to/file
+node ./cli.js move --input path/to/file --output new/path/to/file
 ```
 
 Let's break it down into a few pieces first to see what it is we're trying to
@@ -96,7 +96,7 @@ flags. We are going to introduce a new type.
 ```js
 import { command } from 'reginn'
 
-const buildCommand = command(alias('build'), inputFlag, outputFlag)
+const moveCommand = command(alias('move'), inputFlag, outputFlag)
 ```
 
 Here we're introducing a new type [`Command`](#command). Commands are composed
@@ -115,7 +115,7 @@ import { readFile, writeFile } from 'fs'
 
 import { asPromise } from 'reginn'
 
-asPromise(buildCommand).then(({ args, options }) => {
+asPromise(moveCommand).then(({ args, options }) => {
   // lets read our input file
   readFile(options.input, 'utf8', (err, content) => {
     if (err) throw err
@@ -140,7 +140,7 @@ our application.
 For example:
 
 ```sh
-node ./cli.js build notAFlag --input file.js --output output.js --unhandledFlag
+node ./cli.js move notAFlag --input file.js --output output.js --unhandledFlag
 ```
 
 The resulting `args` will be `[ 'notAFlag' ]` and `options` will be
@@ -162,7 +162,7 @@ The code to do so is
 ```js
 import { run } from 'reginn'
 
-run(buildCommand)
+run(moveCommand)
 ```
 
 This is all we need to implement the API we set out to describe. Here is the entire
@@ -173,9 +173,9 @@ import { command, flag, alias, run, asPromise } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'))
 const inputFlag = flag(alias('input', 'i'))
-const buildCommand = command(alias('build'), inputFlag, outputFlag)
+const moveCommand = command(alias('move'), inputFlag, outputFlag)
 
-asPromise(buildCommand).then(({ args, options }) => {
+asPromise(moveCommand).then(({ args, options }) => {
   // lets read our input file
   readFile(options.input, 'utf8', (err, content) => {
     if (err) throw err
@@ -187,12 +187,14 @@ asPromise(buildCommand).then(({ args, options }) => {
   })
 })
 
-run(buildCommand)
+run(moveCommand)
 ```
 
 At this point I hope you now understand the core concepts of what Reginn is
-trying to do, and what it is capable of. Thank you for taking the time to read
-this and please open an issue for suggestions and comments!
+trying to do, and what it is capable of.
+
+Thank you for taking the time to read this and please open an issue for
+suggestions and comments!
 
 
 ## API Documentation
@@ -227,20 +229,22 @@ alias('name')
 alias('name', 'aliasToName')
 ```
 
-#### Desc
+#### Description
 
 ##### `function desc(description: string): Desc`
 
-A Description is just what you'd expect. It adds descriptive information to
-a parent type. Acceptable parent types are `Flag` and `Command`.
+A Description is used to associate a description to your `Flag`s and `Command`s.
+It can be particular useful for generating output about your application.
 
 **Example:**
 
 ```js
-import { desc } from 'reginn'
+import { desc, flag, alias } from 'reginn'
 
-desc('This is what this is about')
+flag(alias('input'), desc('Takes in a relative path an input file'))
 ```
+
+See [`help`](#help) for a more concrete example.
 
 #### Type
 
@@ -439,16 +443,36 @@ withCallback(commad, ({ args, options }) => {
 
 #### `help(application: string, ...definitions: Array<Flag, App, Command>): App`
 
-`help` is a function that takes a name of you application and adds a new command,
-you guessed it, named `help`. This allows your users to call `node cli.js help`
+`help` is a function that takes a name of you application and adds a new
+command to your application. This allows your users to call `node cli.js help`
 and print out how to use your application.
+
+Lets take a look at how we would do this in our input/output example above and
+see how we would make use of `help`
 
 **example**
 
 ```js
-import { help } from 'reginn'
+// NOTE: we've import desc and help in addition to previous imports
+import { command, flag, alias, run, asPromise, desc, help } from 'reginn'
 
-help('myApp', ....)
+const outputFlag = flag(alias('output', 'o'), desc('Where to output our input file'))
+const inputFlag = flag(alias('input', 'i'), desc('Where to read an input file'))
+const moveCommand = command(alias('move'), inputFlag, outputFlag, desc('Move a file.'))
+
+asPromise(moveCommand).then(({ args, options }) => {
+  // lets read our input file
+  readFile(options.input, 'utf8', (err, content) => {
+    if (err) throw err
+
+    // and lets write it to our output file
+    writeFile(options.output, content, 'utf8', (err) => {
+      if (err) throw err
+    })
+  })
+})
+
+run(help('myApp', moveCommand))
 ```
 
 ```sh
@@ -457,8 +481,9 @@ node ./myapp.js help
 myApp
 
   COMMANDS:
-    command1 - this is command1
+    move - Move a file.
 
   FLAGS:
-    option1 - this is option1
+    input - Where to read an input file
+    output - Where to output our input file
 ```

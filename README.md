@@ -18,7 +18,7 @@ Leading alternatives are both largely unmaintained and
 feature large imperative classes, which are bad for reusability. Many of them
 introduces many new syntaxes that you have to learn and all are based around
 the way you format strings. As you know, that is a recipe for disaster.
-Commander also forces the intermixing of where you declare your application’s
+Many alternatives also force the intermixing of where you declare your application’s
 intent and where side effects exist that leads to poor separation of concerns
 and testability.
 

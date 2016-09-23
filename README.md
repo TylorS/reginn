@@ -446,7 +446,7 @@ withCallback(command, ({ args, options }) => {
 #### `help(application: string, ...definitions: Array<Flag, App, Command>): App`
 
 `help` is a function that takes a name of you application and adds a new
-command to your application. This allows your users to call `node cli.js help`
+command to your application. This allows your users to call `node ./cli.js help`
 and print out how to use your application.
 
 Lets take a look at how we would do this in our input/output example above and

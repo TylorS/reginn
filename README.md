@@ -12,20 +12,20 @@ read, reason about, and test.
 ## Why Reginn?
 
 Reginn was built to eliminate the crutch on monolithic imperative APIs to work
-with the command line.
+with on the command line.
 
 Leading alternatives are both largely unmaintained and
-feature large imperative classes, which are bad for reusability. Many of them
-introduces many new syntaxes that you have to learn and all are based around
-the way you format strings. As you know, that is a recipe for disaster.
+feature large imperative classes, which tend to be bad for reusability. Many of them
+introduce lots of new syntax that you have to learn and they all are based around
+the way you format strings. That is usually a recipe for disaster.
 Many alternatives also force the intermixing of where you declare your application’s
 intent and where side effects exist that leads to poor separation of concerns
 and testability.
 
 Reginn is laser-focused to create small, testable functions that allow you to
 build you command line applications with assurances not found elsewhere. Reginn
-introduces zero new syntaxes to your application and no new concepts, since you
-already know functions.
+introduces zero new syntax to your application and only adds some lego-like
+functions that can be composed together to create your application.
 
 ## This is for me!
 ```sh
@@ -39,7 +39,7 @@ npm install --save reginn
 #### Defining what we want
 
 We're going to walk through the process of creating a small application
-that reads an input file, and writes it somewhere else. Easy.
+that reads an input file, and writes it somewhere else. Let's dive in!
 
 The end result we're looking for is an application we can use like this
 
@@ -75,7 +75,7 @@ to associate other types with a name and optionally an abbreviation to that
 name. We do that here by calling `alias('output', 'o')`.
 
 Secondly we wrap that alias inside of Reginn's `flag()` function. This creates
-our second type introduced here: [`Flag`](#flag). A Flag is mechanism for
+our second type introduced here: [`Flag`](#flag). A Flag is a mechanism for
 creating options that change or define the behavior of your applications.
 
 Can you guess how we are going to create the next piece of our API?
@@ -269,9 +269,9 @@ type('boolean')
 
 #### Flag
 
-##### `function flag(...definitions: Array<Alias | Type>): Flag`
+##### `function flag(...definitions: Array<Alias | Desc | Type>): Flag`
 
-A Flag is a mid-level type which can be composed of `Type` and `Alias`. A flag
+A Flag is a mid-level type which can be composed of `Type`, `Desc` and `Alias`. A flag
 is used to associate options to part of your command.
 
 ```typescript
@@ -283,6 +283,7 @@ type Flag = {
 ```
 
 **Example:**
+
 ```js
 import { flag, type, alias } from 'reginn'
 
@@ -291,21 +292,22 @@ flag(type('boolean'), alias('example'))
 
 #### Command
 
-##### `command(...definitions: Array<Flag | Alias | Command>): Command`
+##### `command(...definitions: Array<Flag | Alias | Desc | Command>): Command`
 
 A Command is a very special type which allows us to compose many options together
 to create a public facing API, and also as a place to sandbox our side-effects.
 
-A Command is typically composed of types `Alias` and `Flag`, but for subcommands,  
+A Command is typically composed of types `Alias`, `Flag` and `Desc`, but for subcommands,
 can be composed with other `Command` types. In the case of matching a command
-that has subcommands, the parent's handler will receive an instance of type `App`.
+that has subcommands, the parent's handler will receive an instance of type `App`
+(`App` is described after this section in detail).
 
 ```typescript
 asPromise(commandWithSubCommands).then((app: App) => {
   run(app) // run your sub application
 })
 
-//or simply
+// or simply
 
 asPromise(commandWithSubCommands).then(run)
 ```
@@ -372,7 +374,7 @@ export type App = {
 }
 ```
 
-**Example: **
+**Example:**
 
 ```js
 import { app, command, alias } from 'reginn'
@@ -382,6 +384,10 @@ const gitApp = app(command(alias('git')))
 const hgApp = app(command(alias('hg')))
 
 const vcsApp = app(gitApp, hgApp)
+
+// Now we've got two commands that can be used:
+// node ./cli.js git
+// node ./cli.js hg
 ```
 
 ### Running you Application
@@ -434,7 +440,7 @@ asStream(command).observe(({ args, options }) => {
 ```js
 import { withCallback } from 'reginn'
 
-withCallback(commad, ({ args, options }) => {
+withCallback(command, ({ args, options }) => {
   // do stuff
 })
 ```
@@ -444,7 +450,7 @@ withCallback(commad, ({ args, options }) => {
 #### `help(application: string, ...definitions: Array<Flag, App, Command>): App`
 
 `help` is a function that takes a name of you application and adds a new
-command to your application. This allows your users to call `node cli.js help`
+command to your application. This allows your users to call `node ./cli.js help`
 and print out how to use your application.
 
 Lets take a look at how we would do this in our input/output example above and
@@ -453,7 +459,7 @@ see how we would make use of `help`
 **example**
 
 ```js
-// NOTE: we've import desc and help in addition to previous imports
+// NOTE: we'll import desc and help in addition to previous imports
 import { command, flag, alias, run, asPromise, desc, help } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'), desc('Where to output our input file'))

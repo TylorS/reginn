@@ -24,8 +24,8 @@ and testability.
 
 Reginn is laser-focused to create small, testable functions that allow you to
 build you command line applications with assurances not found elsewhere. Reginn
-introduces zero new syntax to your application and adds no new concepts, as we are
-only dealing with functions.
+introduces zero new syntax to your application and only adds some lego-like
+functions that can be composed together to create your application.
 
 ## This is for me!
 ```sh

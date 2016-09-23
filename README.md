@@ -283,6 +283,7 @@ type Flag = {
 ```
 
 **Example:**
+
 ```js
 import { flag, type, alias } from 'reginn'
 
@@ -305,7 +306,7 @@ asPromise(commandWithSubCommands).then((app: App) => {
   run(app) // run your sub application
 })
 
-//or simply
+// or simply
 
 asPromise(commandWithSubCommands).then(run)
 ```
@@ -372,7 +373,7 @@ export type App = {
 }
 ```
 
-**Example: **
+**Example:**
 
 ```js
 import { app, command, alias } from 'reginn'

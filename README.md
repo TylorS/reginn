@@ -75,7 +75,7 @@ to associate other types with a name and optionally an abbreviation to that
 name. We do that here by calling `alias('output', 'o')`.
 
 Secondly we wrap that alias inside of Reginn's `flag()` function. This creates
-our second type introduced here: [`Flag`](#flag). A Flag is mechanism for
+our second type introduced here: [`Flag`](#flag). A Flag is a mechanism for
 creating options that change or define the behavior of your applications.
 
 Can you guess how we are going to create the next piece of our API?
@@ -435,7 +435,7 @@ asStream(command).observe(({ args, options }) => {
 ```js
 import { withCallback } from 'reginn'
 
-withCallback(commad, ({ args, options }) => {
+withCallback(command, ({ args, options }) => {
   // do stuff
 })
 ```
@@ -454,7 +454,7 @@ see how we would make use of `help`
 **example**
 
 ```js
-// NOTE: we've import desc and help in addition to previous imports
+// NOTE: we'll import desc and help in addition to previous imports
 import { command, flag, alias, run, asPromise, desc, help } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'), desc('Where to output our input file'))

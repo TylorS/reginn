@@ -384,6 +384,10 @@ const gitApp = app(command(alias('git')))
 const hgApp = app(command(alias('hg')))
 
 const vcsApp = app(gitApp, hgApp)
+
+// Now we've got two commands that can be used:
+// node ./cli.js git
+// node ./cli.js hg
 ```
 
 ### Running you Application

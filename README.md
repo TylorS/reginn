@@ -269,9 +269,9 @@ type('boolean')
 
 #### Flag
 
-##### `function flag(...definitions: Array<Alias | Type>): Flag`
+##### `function flag(...definitions: Array<Alias | Desc | Type>): Flag`
 
-A Flag is a mid-level type which can be composed of `Type` and `Alias`. A flag
+A Flag is a mid-level type which can be composed of `Type`, `Desc` and `Alias`. A flag
 is used to associate options to part of your command.
 
 ```typescript
@@ -292,12 +292,12 @@ flag(type('boolean'), alias('example'))
 
 #### Command
 
-##### `command(...definitions: Array<Flag | Alias | Command>): Command`
+##### `command(...definitions: Array<Flag | Alias | Desc | Command>): Command`
 
 A Command is a very special type which allows us to compose many options together
 to create a public facing API, and also as a place to sandbox our side-effects.
 
-A Command is typically composed of types `Alias` and `Flag`, but for subcommands,  
+A Command is typically composed of types `Alias`, `Flag` and `Desc`, but for subcommands,
 can be composed with other `Command` types. In the case of matching a command
 that has subcommands, the parent's handler will receive an instance of type `App`
 (`App` is described after this section in detail).

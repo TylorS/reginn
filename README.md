@@ -39,7 +39,7 @@ npm install --save reginn
 #### Defining what we want
 
 We're going to walk through the process of creating a small application
-that reads an input file, and writes it somewhere else. Easy.
+that reads an input file, and writes it somewhere else. Let's dive in!
 
 The end result we're looking for is an application we can use like this
 

@@ -12,7 +12,7 @@ read, reason about, and test.
 ## Why Reginn?
 
 Reginn was built to eliminate the crutch on monolithic imperative APIs to work
-with the command line.
+with on the command line.
 
 Leading alternatives are both largely unmaintained and
 feature large imperative classes, which are bad for reusability. Many of them

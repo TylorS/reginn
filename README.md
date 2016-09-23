@@ -299,7 +299,8 @@ to create a public facing API, and also as a place to sandbox our side-effects.
 
 A Command is typically composed of types `Alias` and `Flag`, but for subcommands,  
 can be composed with other `Command` types. In the case of matching a command
-that has subcommands, the parent's handler will receive an instance of type `App`.
+that has subcommands, the parent's handler will receive an instance of type `App`
+(`App` is described after this section in detail).
 
 ```typescript
 asPromise(commandWithSubCommands).then((app: App) => {

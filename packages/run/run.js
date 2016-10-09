@@ -1,5 +1,6 @@
-import { map, filter, pluck, is, tail, pipe, each, reduce, merge,
-         id, ifElse, contains, partial, __, set, colors, figures } from '@northbrook/util'
+import { colors, figures } from '@northbrook/util'
+import { map, filter, tail, pipe, forEach,
+         reduce, merge, identity, ifElse, contains } from 'ramda'
 
 import minimist from 'minimist'
 
@@ -28,13 +29,17 @@ export function run (argv, app) {
   const commandOptions = Object.assign({}, app.flag || {}, getCommandArgs(matchedCommands))
   const { _, ...options } = getArgs(argv, { flag: commandOptions })
 
-  const hasHandlerFn = pipe(pluck('handler'), is('function'))
+  const hasHandlerFn = pipe(x => x.handler, isFunction)
   const filterCommandOptions = filterOptions(options, app.flag || {}, argv)
   const commandCall = callCommand(filterCommandOptions, _, commandOptions, argv)
 
-  each(ifElse(hasHandlerFn, commandCall, logWarning), matchedCommands)
+  forEach(ifElse(hasHandlerFn, commandCall, logWarning), matchedCommands)
 
   return { type: 'app', flag: commandOptions, command: matchedCommands, args: _, commandOptions }
+}
+
+function isFunction (obj) {
+  return !!(obj && obj.constructor && obj.call && obj.apply)
 }
 
 function getArgs (argv, app) {
@@ -42,17 +47,17 @@ function getArgs (argv, app) {
 }
 
 function matchCommands (app, args) {
-  const isCmd = ([name, alias]) => is(args._[0], name) || is(args._[0], alias)
+  const isCmd = ([name, alias]) => args._[0] === name || args._[0] === alias
   const aliasMatches = cmd => filter(isCmd, cmd.alias).length > 0
 
-  const filterMatches = ifElse(hasAlias, aliasMatches, id)
+  const filterMatches = ifElse(hasAlias, aliasMatches, identity)
 
   return filter(filterMatches, app.type === 'command' ? [app] : app.command)
 }
 
 const hasAlias = x => !!x.alias
 const hasFlag = x => !!x.flag
-const getCommandArgs = pipe(filter(hasFlag), map(pluck('flag')))
+const getCommandArgs = pipe(filter(hasFlag), map(x => x.flag))
 
 function filterOptions (options, globals, argv) {
   return function (command) {
@@ -82,8 +87,14 @@ function filterFlags (command, globals, argv) {
 }
 
 const filterObject = function (_keys, obj) {
-  const containsKey = partial(contains, [__, _keys])
-  const setKey = (key, o) => obj[key] ? set(obj[key], key, o) : o
+  const containsKey = key => contains(key, _keys)
+  const setKey = (key, o) => {
+    if (obj[key]) {
+      o[key] = obj[key]
+    }
+
+    return o
+  }
 
   return reduce((acc, key) => {
     if (containsKey(key)) return setKey(key, acc)

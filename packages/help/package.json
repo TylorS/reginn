@@ -1,6 +1,6 @@
 {
   "name": "@reginn/help",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A help command wrapper for Reginn",
   "main": "dist/reginn-help.js",
   "jsnext:main": "help.js",

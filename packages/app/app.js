@@ -1,4 +1,4 @@
-import { reduce, append, merge } from '@northbrook/util'
+import { reduce, append, merge } from 'ramda'
 
 export const app = (...definitions) =>
   reduce(toType, { type: 'app', command: [] }, definitions)

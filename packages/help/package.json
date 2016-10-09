@@ -30,7 +30,6 @@
     "@reginn/app": "^1.0.0",
     "@reginn/command": "^1.0.0",
     "@reginn/run": "^1.0.0",
-    "@reginn/stream": "^1.0.0",
-    "ramda": "^0.22.1"
+    "@reginn/stream": "^1.0.0"
   }
 }

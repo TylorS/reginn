@@ -1,4 +1,3 @@
-import { map, filter, concat } from 'ramda'
 import { app } from '@reginn/app'
 import { command } from '@reginn/command'
 import { alias } from '@reginn/alias'
@@ -32,8 +31,8 @@ function buildHelpCommand (name, definitions) {
 
 function showHelp (name, definitions) {
   const apps = filterApp(definitions)
-  const cmds = concat(filterCommands(definitions), map(x => x.command, apps))
-  const flags = concat(filterFlag(definitions), map(x => x.flag, apps))
+  const cmds = apps.map(x => x.command).concat(filterCommands(definitions))
+  const flags = apps.map(x => x.flag).concat(filterFlag(definitions))
 
   return function ({ args, options }, description) {
     console.log(`  ${name.toUpperCase()}
@@ -58,7 +57,7 @@ function displayFlag ({ alias, desc }) {
 }
 
 const filterType = type => definitions =>
-  filter(x => x.type === type && !!x.desc && x.alias && x.alias[0][0], definitions)
+  definitions.filter(x => x.type === type && !!x.desc && x.alias && x.alias[0][0])
 
 const filterApp = filterType('app')
 const filterCommands = filterType('command')

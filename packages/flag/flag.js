@@ -1,11 +1,14 @@
-import { reduce, set } from '@northbrook/util'
+import { reduce } from 'ramda'
 
 export const flag = (...definitions) =>
   reduce(toType, {type: TYPE, flagType: 'string', alias: []}, definitions)
 
 function toType (acc, { type, value }) {
   switch (type) {
-    case 'type': return set(value, 'flagType', acc)
+    case 'type': {
+      acc.flagType = value
+      return acc
+    }
     case 'alias': {
       acc.alias = acc.alias.concat([ value ])
       return acc

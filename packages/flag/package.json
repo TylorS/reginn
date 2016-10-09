@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
-    "@northbrook/util": "^1.0.2"
+    "ramda": "^0.22.1"
   }
 }

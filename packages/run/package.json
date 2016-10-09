@@ -1,6 +1,6 @@
 {
   "name": "@reginn/run",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run your Reginn Applications",
   "main": "dist/reginn-run.js",
   "jsnext:main": "run..js",

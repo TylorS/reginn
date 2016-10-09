@@ -1,6 +1,6 @@
 {
   "name": "@reginn/command",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Commands for Reginn",
   "main": "dist/reginn-command.js",
   "jsnext:main": "command.js",

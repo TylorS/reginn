@@ -1,3 +1,12 @@
+# v1.0.1 (2016-10-09)
+---
+
+
+## Bug Fixes
+
+- fix(command): switch to ramda from @northbrook/util [a43b7578](https://github.com/tylors/reginn/commits/a43b7578d0208e85f5e6affb8ac930b37291038e)
+
+
 # v1.0.0 (2016-09-21)
 ---
 

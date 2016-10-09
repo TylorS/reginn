@@ -1,6 +1,6 @@
 {
   "name": "@reginn/app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Application Container for Reginn",
   "main": "dist/reginn-app.js",
   "jsnext:main": "app.js",

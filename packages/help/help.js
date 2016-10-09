@@ -1,4 +1,4 @@
-import { map, filter, concat } from '@northbrook/util'
+import { map, filter, concat } from 'ramda'
 import { app } from '@reginn/app'
 import { command } from '@reginn/command'
 import { alias } from '@reginn/alias'

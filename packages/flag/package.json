@@ -1,6 +1,6 @@
 {
   "name": "@reginn/flag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Flags for Reginn",
   "main": "dist/reginn-flag.js",
   "jsnext:main": "flag.js",

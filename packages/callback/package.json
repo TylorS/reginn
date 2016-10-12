@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/tylors/reginn/issues"
   },
-  "homepage": "https://github.com/tylors/reginn#readme",
-  "dependencies": {
-    "@northbrook/util": "^1.0.2"
-  }
+  "homepage": "https://github.com/tylors/reginn#readme"
 }

@@ -72,6 +72,8 @@ declare module "@reginn/desc" {
     type: "desc",
     value: string
   }
+
+  export function desc(description: string): Description;
 }
 
 declare module "@reginn/flag" {

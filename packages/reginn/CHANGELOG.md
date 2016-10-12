@@ -1,3 +1,12 @@
+# v1.0.4 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(reginn): update typings [e53d4858](https://github.com/tylors/reginn/commits/e53d48585b267fc5d7ea43d6d8761171ca93a5fb)
+
+
 # v1.0.3 (2016-10-12)
 ---
 

@@ -1,3 +1,12 @@
+# v1.0.2 (2016-10-11)
+---
+
+
+## Bug Fixes
+
+- fix(help): update dependencies [2315b1ff](https://github.com/tylors/reginn/commits/2315b1ff8fb59a77ad64127af4257dc613a4647a)
+
+
 # v1.0.1 (2016-10-09)
 ---
 

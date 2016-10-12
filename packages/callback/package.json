@@ -1,6 +1,6 @@
 {
   "name": "@reginn/callback",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Callback handler for Reginn",
   "main": "dist/reginn-callback.js",
   "jsnext:main": "callback.js",

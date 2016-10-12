@@ -1,3 +1,12 @@
+# v1.0.3 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(reginn): add typings field to reginn [f057e24c](https://github.com/tylors/reginn/commits/f057e24c99c6f1dc1ee73dda021e26478dbdb161)
+
+
 # v1.0.2 (2016-10-12)
 ---
 

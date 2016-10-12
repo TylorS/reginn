@@ -1,6 +1,6 @@
 {
   "name": "reginn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Composable Command Line Applications",
   "main": "dist/reginn.js",
   "jsnext:main": "reginn.js",

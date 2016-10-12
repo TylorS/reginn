@@ -1,6 +1,6 @@
 {
   "name": "@reginn/promise",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Promise handler for Reginn",
   "main": "dist/reginn-promise.js",
   "jsnext:main": "promise.js",

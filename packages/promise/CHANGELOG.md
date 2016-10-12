@@ -1,3 +1,12 @@
+# v1.0.2 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(promise): reject promise instead of throwing error [de0eee81](https://github.com/tylors/reginn/commits/de0eee819e8dfae86a0fcccd3e5d33dcf65a9e37)
+
+
 # v1.0.1 (2016-10-11)
 ---
 

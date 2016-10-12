@@ -1,8 +1,10 @@
-import { colors, figures } from '@northbrook/util'
 import { map, filter, tail, pipe, forEach,
          reduce, merge, identity, ifElse, contains } from 'ramda'
 
 import minimist from 'minimist'
+
+import { red, yellow, white, bold } from '../colors'
+import { cross } from '../figures'
 
 export function run (argv, app) {
   if (!app) {
@@ -21,9 +23,9 @@ export function run (argv, app) {
 
   /* fail early if no commands are matched */
   if (matchedCommands.length === 0) {
-    return console.error(colors.red.bold(figures.cross) + ' ' +
-      colors.white('Can not find command ') +
-      (args._[0] ? colors.red.bold(`${args._[0]}`) : ''))
+    return console.error(red(bold(cross)) + ' ' +
+      white('Can not find command ') +
+      (args._[0] ? red(bold(`${args._[0]}`)) : ''))
   }
 
   const commandOptions = Object.assign({}, app.flag || {}, getCommandArgs(matchedCommands))
@@ -143,6 +145,6 @@ function toCamelCase (str) {
 }
 
 function logWarning (cmd) {
-  const name = cmd.alias && cmd.alias[0] && cmd.alias[0][0] || ''
-  console.log(colors.yellow(`${name}`) + colors.white(` does not have an associated handler!`))
+  const name = cmd.alias && cmd.alias[0] && cmd.alias[0][0] || 'command'
+  console.log(yellow(`${name}`) + white(` does not have an associated handler!`))
 }

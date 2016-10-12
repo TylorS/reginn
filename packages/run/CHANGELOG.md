@@ -1,3 +1,12 @@
+# v1.0.3 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(run): use merge instead of Object.assign [4859ea5c](https://github.com/TylorS/reginn/commits/4859ea5c049aa89b11d28fd334e38580bccb4613)
+
+
 # v1.0.2 (2016-10-11)
 ---
 

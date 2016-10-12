@@ -8,5 +8,11 @@ export function withCallback (command, callback) {
     throw new Error(red(`Can not handle type "${type}"`))
   }
 
+  if (!callback) {
+    return function (cb) {
+      command.handler = cb
+    }
+  }
+
   command.handler = callback
 }

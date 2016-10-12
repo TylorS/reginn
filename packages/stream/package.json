@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
-    "@northbrook/util": "^1.0.2",
     "most": "^1.0.3"
   }
 }

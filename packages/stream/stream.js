@@ -1,6 +1,6 @@
 import scheduler from 'most/lib/scheduler/defaultScheduler'
 import { multicast, never } from 'most'
-import { colors } from '@northbrook/util'
+import { red } from '../colors'
 
 import { shouldHandle } from '../shouldHandle'
 
@@ -20,7 +20,7 @@ export function asStream (command) {
   const { type } = command
 
   if (!shouldHandle(type)) {
-    throw new Error(colors.red(`Can not handle type "${type}"`))
+    throw new Error(red(`Can not handle type "${type}"`))
   }
 
   const { observer, stream } = subject()

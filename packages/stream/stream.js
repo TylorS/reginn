@@ -27,13 +27,6 @@ export function asStream (command) {
 
   command.handler = function (x) {
     observer.next(x)
-    process.nextTick(() => {
-      observer.complete(x)
-    })
-  }
-
-  command.handler.error = function (e) {
-    observer.error(e)
   }
 
   return stream

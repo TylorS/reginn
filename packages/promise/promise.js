@@ -9,15 +9,17 @@ export function asPromise (command) {
   }
 
   let _resolve = null
+  let _reject = null
 
-  const promise = new Promise((resolve) => {
+  const promise = new Promise((resolve, reject) => {
     _resolve = resolve
+    _reject = reject
   })
 
   command.handler = function (x) {
     if (_resolve) _resolve(x)
     else {
-      throw new Error('Unable to resolve your promise')
+      _reject(new Error('Unable to resolve your promise'))
     }
   }
 

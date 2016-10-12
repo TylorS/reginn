@@ -35,14 +35,14 @@
   "dependencies": {
     "@reginn/alias": "^1.0.0",
     "@reginn/app": "^1.0.1",
-    "@reginn/callback": "^1.0.1",
+    "@reginn/callback": "^1.1.0",
     "@reginn/command": "^1.0.1",
     "@reginn/desc": "^1.0.0",
     "@reginn/flag": "^1.0.1",
-    "@reginn/help": "^1.0.1",
-    "@reginn/promise": "^1.0.1",
-    "@reginn/run": "^1.0.2",
-    "@reginn/stream": "^1.0.1",
+    "@reginn/help": "^1.0.2",
+    "@reginn/promise": "^1.0.2",
+    "@reginn/run": "^1.0.3",
+    "@reginn/stream": "^1.0.2",
     "@reginn/type": "^1.0.0"
   }
 }

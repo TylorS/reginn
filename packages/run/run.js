@@ -28,7 +28,7 @@ export function run (argv, app) {
       (args._[0] ? red(bold(`${args._[0]}`)) : ''))
   }
 
-  const commandOptions = Object.assign({}, app.flag || {}, getCommandArgs(matchedCommands))
+  const commandOptions = merge(app.flag || {}, getCommandArgs(matchedCommands))
   const { _, ...options } = getArgs(argv, { flag: commandOptions })
 
   const hasHandlerFn = pipe(x => x.handler, isFunction)
@@ -107,7 +107,7 @@ const filterObject = function (_keys, obj) {
 function callCommand (filter, args, options, argv) {
   return function (cmd) {
     if (cmd.command && cmd.command.length > 0) {
-      const commandOptions = Object.assign({}, options,
+      const commandOptions = merge(options,
           reduce(merge, {}, getCommandArgs(cmd.command)))
 
       cmd.handler(createSubApp(args, filter, commandOptions, cmd, argv))

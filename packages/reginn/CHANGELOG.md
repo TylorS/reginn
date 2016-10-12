@@ -1,3 +1,12 @@
+# v1.0.2 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(reginn): add typescript declaration to files [fd76476a](https://github.com/tylors/reginn/commits/fd76476a490922689fb05587c9f12e68926d43b6)
+
+
 # v1.0.1 (2016-10-11)
 ---
 

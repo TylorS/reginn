@@ -1,3 +1,12 @@
+# v1.0.2 (2016-10-11)
+---
+
+
+## Bug Fixes
+
+- fix(run): remove @northbrook/util [76235274](https://github.com/TylorS/reginn/commits/762352749935db51cbc993da0ebf1b56e88da767)
+
+
 # v1.0.1 (2016-10-09)
 ---
 

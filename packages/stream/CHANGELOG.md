@@ -1,3 +1,12 @@
+# v1.0.1 (2016-10-11)
+---
+
+
+## Bug Fixes
+
+- fix(stream): remove @northbrook/util dep [aa95dbbf](https://github.com/tylors/reginn/commits/aa95dbbf862480d297e3c3de8140f7d15ac60ebd)
+
+
 # v1.0.0 (2016-09-21)
 ---
 

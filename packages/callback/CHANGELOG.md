@@ -1,3 +1,12 @@
+# v1.1.0 (2016-10-12)
+---
+
+
+## Features
+
+- feat(callback): curry withCallback [84a5006d](https://github.com/tylors/reginn/commits/84a5006d15cb98164aadd657cd8413166607c7fc)
+
+
 # v1.0.1 (2016-10-11)
 ---
 

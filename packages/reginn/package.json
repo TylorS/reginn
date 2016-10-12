@@ -5,6 +5,7 @@
   "main": "dist/reginn.js",
   "jsnext:main": "reginn.js",
   "module": "reginn.js",
+  "typings": "reginn.d.ts",
   "files": [
     "dist",
     "reginn.js",

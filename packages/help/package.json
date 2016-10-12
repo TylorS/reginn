@@ -25,11 +25,10 @@
   },
   "homepage": "https://github.com/tylors/reginn#readme",
   "dependencies": {
-    "@northbrook/util": "^1.0.2",
     "@reginn/alias": "^1.0.0",
-    "@reginn/app": "^1.0.0",
-    "@reginn/command": "^1.0.0",
-    "@reginn/run": "^1.0.0",
-    "@reginn/stream": "^1.0.0"
+    "@reginn/app": "^1.0.1",
+    "@reginn/command": "^1.0.1",
+    "@reginn/run": "^1.0.2",
+    "@reginn/stream": "^1.0.1"
   }
 }

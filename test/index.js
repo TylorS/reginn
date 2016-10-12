@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha'
 import assert from 'power-assert'
 import sinon from 'sinon'
-import { colors } from '@northbrook/util'
+import { yellow, white } from '../packages/colors'
 
 import { alias, type, flag, desc, command, app, run,
          withCallback, asPromise, asStream, help } from '../packages/reginn/reginn'
@@ -226,7 +226,7 @@ describe('reginn', () => {
 
       sinon.assert.calledOnce(console.log)
       sinon.assert.calledWithExactly(console.log,
-        sinon.match(colors.yellow('test') + colors.white(' does not have an associated handler!')))
+        sinon.match(yellow('test') + white(' does not have an associated handler!')))
 
       sandbox.restore()
     })

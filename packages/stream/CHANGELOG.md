@@ -1,3 +1,12 @@
+# v1.0.2 (2016-10-12)
+---
+
+
+## Bug Fixes
+
+- fix(stream): remove handler.error and allow multiple values [ab28f32d](https://github.com/tylors/reginn/commits/ab28f32df997672ba7111b49a1d170b796ee1cb1)
+
+
 # v1.0.1 (2016-10-11)
 ---
 

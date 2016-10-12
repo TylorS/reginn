@@ -1,6 +1,6 @@
 {
   "name": "@reginn/stream",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stream Handler for Reginn",
   "main": "dist/reginn-stream.js",
   "jsnext:main": "stream.js",

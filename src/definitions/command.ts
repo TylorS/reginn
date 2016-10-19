@@ -10,7 +10,6 @@ type accumulator = {
   description?: string
 }
 
-
 export function command(...definitions: Array<Alias | Flag | Description | Command>): Command {
   const seed: accumulator = {
     aliases: [],

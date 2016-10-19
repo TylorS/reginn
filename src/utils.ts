@@ -7,8 +7,13 @@ export function addFlag (seed: accumulator, flag: Flag) {
   return reduce((acc: accumulator, alias: Alias) => {
     const newFlag: any = {
       [ flag.flagType ]: alias.name,
-      alias: {}
+      alias: {},
+      description: {}
     };
+
+    if (flag.description) {
+      newFlag.description[alias.name] = flag.description;
+    }
 
     if (alias.abbreviation !== alias.name) {
       newFlag.alias[alias.name] = alias.abbreviation;

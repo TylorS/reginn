@@ -16,11 +16,17 @@ function filterFlags (commandFlags: CommandFlags, parsedFlags: CommandFlags, arg
   return Object.keys(options).filter(key => {
     const value = options[key];
 
+    if (key.startsWith('-')) return false;
+
     const typeOf = typeof value as 'string' | 'boolean';
 
     const flags = typeOf === 'string'
       ? mergedFlags.string
       : mergedFlags.boolean;
+
+    if (typeof flags === 'string') {
+      return true;
+    }
 
     if (flags && flags.indexOf(key) > -1) {
       if (typeOf === 'string') return Boolean(value);

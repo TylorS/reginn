@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "editor.fontFamily": "'Fira Code', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [80],
+  "editor.fontLigatures": true
+}

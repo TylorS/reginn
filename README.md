@@ -27,6 +27,11 @@ build you command line applications with assurances not found elsewhere. Reginn
 introduces zero new syntax to your application and only adds some lego-like
 functions that can be composed together to create your application.
 
+## TypeScript
+
+This library is written in TypeScript and is highly recommended when writing
+your applications!
+
 ## This is for me!
 ```sh
 npm install --save reginn
@@ -61,7 +66,7 @@ The code to do this is
 ```js
 import { flag, alias } from 'reginn'
 
-const outputFlag = flag(alias('output', 'o'))
+const outputFlag = flag('string', alias('output', 'o'))
 ```
 
 Remember that we're dealing with function composition. Here we are describing
@@ -76,14 +81,15 @@ name. We do that here by calling `alias('output', 'o')`.
 
 Secondly we wrap that alias inside of Reginn's `flag()` function. This creates
 our second type introduced here: [`Flag`](#flag). A Flag is a mechanism for
-creating options that change or define the behavior of your applications.
+creating options that change or define the behavior of your applications. The
+first argument `string` is telling Reginn how to parse its input.
 
 Can you guess how we are going to create the next piece of our API?
 
 We want to enable this: `-i path/to/file`
 
 ```js
-const inputFlag = flag(alias('input', 'i'))
+const inputFlag = flag('string', alias('input', 'i'))
 ```
 
 Exactly like the `outputFlag` above!
@@ -214,10 +220,11 @@ for a user of your command line applications. An Alias is a fundamental type,
 that can not be composed of other types.
 
 ```typescript
-type Alias = {
-  type: 'alias',
-  value: [string, string]
-};
+export interface Alias {
+    type: 'alias';
+    name: string;
+    abbreviation: string;
+}
 ```
 
 **Example:**
@@ -231,41 +238,27 @@ alias('name', 'aliasToName')
 
 #### Description
 
-##### `function desc(description: string): Desc`
+##### `function desctiption(description: string): Desc`
 
 A Description is used to associate a description to your `Flag`s and `Command`s.
 It can be particular useful for generating output about your application.
+
+```typescript
+export interface Description {
+    type: 'description';
+    description: string;
+}
+```
 
 **Example:**
 
 ```js
 import { desc, flag, alias } from 'reginn'
 
-flag(alias('input'), desc('Takes in a relative path an input file'))
+flag('string', alias('input'), desc('Takes in a relative path an input file'))
 ```
 
 See [`help`](#help) for a more concrete example.
-
-#### Type
-
-##### `function type (value: 'string' | 'boolean'): Type`
-
-A Type is created to distinguish how to parse the input of a [Flag](#flag).
-
-```typescript
-type Type = {
-  type: 'type',
-  value: 'string' | 'boolean'
-};
-```
-
-**Example:**
-
-```js
-import { type } from 'reginn'
-
-type('boolean')
-```
 
 #### Flag
 
@@ -275,11 +268,13 @@ A Flag is a mid-level type which can be composed of `Type`, `Desc` and `Alias`. 
 is used to associate options to part of your command.
 
 ```typescript
-type Flag = {
-  type: 'flag',
-  flagType: 'string' | 'boolean',
-  alias: Array<[string, string]>
-};
+export declare type FlagType = 'string' | 'boolean';
+export interface Flag {
+    type: 'flag';
+    flagType: FlagType;
+    aliases: Array<Alias>;
+    description?: string;
+}
 ```
 
 **Example:**
@@ -316,36 +311,47 @@ The reason that subcommands are handled in this way, is because executing
 commands is a side-effect! Furthermore, it is possible to provide extra logic
 to be performed before calling the subcommmands like composing with another App.
 
-```
-type Command = {
-  type: 'command',
-  command?: Array<Command>,
-  flag?: CommandFlags,
-  alias?: Array<[string, string]>,
-  handler?: Handler
-};
+```typescript
+export interface Command {
+    type: 'command';
+    flags: CommandFlags;
+    aliases: Array<Alias>;
+    commands: Array<Command>;
+    description?: string;
+    handler?: Handler;
+}
 
-type CommandFlags = {
-  alias?: Array< { [name: string]: string } >,
-  string?: string[],
-  boolean?: string[]
-};
+export interface CommandFlags {
+    string?: string[];
+    boolean?: string[];
+    alias?: {
+        [key: string]: string;
+    };
+    default?: {
+        [key: string]: any;
+    };
+}
 
-type Handler = (input: HandlerOption) => any;
+export interface HandlerOptions {
+    args: Array<string>;
+    options: any;
+}
 
-type HandlerOption = {
-  args: string,
-  options: Object
-};
+export interface HandlerApp extends App {
+    args: Array<string>;
+    options: any;
+}
 
+export interface Handler {
+    (input: HandlerOptions | HandlerApp): any;
+}
 ```
 
 **Example:**
 
 ```js
 import { command, flag, alias } from 'reginn'
-run
-command(flag(alias('only'), alias('test'))
+run(command(flag(alias('only'), alias('test'))))
 ```
 
 #### App
@@ -365,12 +371,10 @@ of commands between the applications, the one defined on the application to
 the right will override the application to the left.
 
 ```typescript
-export type App = {
-  type: 'app',
-  command: Array<Command>,
-  flag?: CommandFlags,
-  args?: Array<string> // only present for subcommand apps
-  options?: Object // only present for subcommand appss
+export interface App {
+    type: 'app';
+    commands: Array<Command>;
+    flags: CommandFlags;
 }
 ```
 
@@ -443,53 +447,4 @@ import { withCallback } from 'reginn'
 withCallback(command, ({ args, options }) => {
   // do stuff
 })
-```
-
-### Commands
-
-#### `help(application: string, ...definitions: Array<Flag, App, Command>): App`
-
-`help` is a function that takes a name of you application and adds a new
-command to your application. This allows your users to call `node ./cli.js help`
-and print out how to use your application.
-
-Lets take a look at how we would do this in our input/output example above and
-see how we would make use of `help`
-
-**example**
-
-```js
-// NOTE: we'll import desc and help in addition to previous imports
-import { command, flag, alias, run, asPromise, desc, help } from 'reginn'
-
-const outputFlag = flag(alias('output', 'o'), desc('Where to output our input file'))
-const inputFlag = flag(alias('input', 'i'), desc('Where to read an input file'))
-const moveCommand = command(alias('move'), inputFlag, outputFlag, desc('Move a file.'))
-
-asPromise(moveCommand).then(({ args, options }) => {
-  // lets read our input file
-  readFile(options.input, 'utf8', (err, content) => {
-    if (err) throw err
-
-    // and lets write it to our output file
-    writeFile(options.output, content, 'utf8', (err) => {
-      if (err) throw err
-    })
-  })
-})
-
-run(help('myApp', moveCommand))
-```
-
-```sh
-node ./myapp.js help
-
-myApp
-
-  COMMANDS:
-    move - Move a file.
-
-  FLAGS:
-    input - Where to read an input file
-    output - Where to output our input file
 ```

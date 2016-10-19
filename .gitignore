@@ -1,6 +1,7 @@
 node_modules
 dist
 *.log
-*log*
+*.log*
 coverage
 .coverage
+lib

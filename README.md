@@ -119,9 +119,9 @@ functions to create side-effects but here we are going to use a `Promise`.
 ```js
 import { readFile, writeFile } from 'fs'
 
-import { asPromise } from 'reginn'
+import { withPromise } from 'reginn'
 
-asPromise(moveCommand).then(({ args, options }) => {
+withPromise(moveCommand).then(({ args, options }) => {
   // lets read our input file
   readFile(options.input, 'utf8', (err, content) => {
     if (err) throw err
@@ -134,7 +134,7 @@ asPromise(moveCommand).then(({ args, options }) => {
 })
 ```
 
-Calling `asPromise` with a `Command` as the sole argument returns to us a
+Calling `withPromise` with a `Command` as the sole argument returns to us a
 Promise that will resolve when the command has been matched. The resolved promise
 will have access to an object with `args` and `options`.
 
@@ -175,13 +175,13 @@ This is all we need to implement the API we set out to describe. Here is the ent
 application.
 
 ```js
-import { command, flag, alias, run, asPromise } from 'reginn'
+import { command, flag, alias, run, withPromise } from 'reginn'
 
 const outputFlag = flag(alias('output', 'o'))
 const inputFlag = flag(alias('input', 'i'))
 const moveCommand = command(alias('move'), inputFlag, outputFlag)
 
-asPromise(moveCommand).then(({ args, options }) => {
+withPromise(moveCommand).then(({ args, options }) => {
   // lets read our input file
   readFile(options.input, 'utf8', (err, content) => {
     if (err) throw err
@@ -298,13 +298,13 @@ that has subcommands, the parent's handler will receive an instance of type `App
 (`App` is described after this section in detail).
 
 ```typescript
-asPromise(commandWithSubCommands).then((app: App) => {
+withPromise(commandWithSubCommands).then((app: App) => {
   run(app) // run your sub application
 })
 
 // or simply
 
-asPromise(commandWithSubCommands).then(run)
+withPromise(commandWithSubCommands).then(run)
 ```
 
 The reason that subcommands are handled in this way, is because executing
@@ -417,12 +417,12 @@ run(application)
 
 Handlers are the mechanisms for performing side-effects from commands.
 
-#### `asPromise(cmd: Command): Promise<HandlerOption | App>`
+#### `withPromise(cmd: Command): Promise<HandlerOption | App>`
 
 ```js
-import { asPromise } from 'reginn'
+import { withPromise } from 'reginn'
 
-asPromise(command).then(({ args, options }) => {
+withPromise(command).then(({ args, options }) => {
   // do stuff
 })
 ```

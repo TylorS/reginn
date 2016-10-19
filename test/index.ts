@@ -3,7 +3,7 @@
 
 import * as assert from 'assert';
 import * as sinon from 'sinon';
-import { run, app, command, alias, flag, withPromise, withCallback } from '../src';
+import { run, app, command, alias, flag, description, withPromise, withCallback } from '../src';
 import { yellow, white } from '../src/utils';
 
 describe('Reginn', () => {
@@ -15,6 +15,35 @@ describe('Reginn', () => {
       const app3 = app(app1, app2);
 
       assert(app3.commands.length === 2);
+    });
+  });
+
+  describe('help', () => {
+    it('should add a help commmand', (done) => {
+      const sandbox = sinon.sandbox.create();
+      const stub = sandbox.stub(console, 'log');
+
+      const cmd = command(alias('hello'), description('Hello Command'),
+        flag('string', alias('option', 'o'), description('option flag')));
+
+      const cmd2 = command(alias('hi'), description('Hi Command'),
+        flag('string', alias('option', 'o'), description('option flag')));
+
+      const helpMessage = `
+hello  -  Hello Command
+  --option, -o  :  option flag
+
+hi  -  Hi Command
+  --option, -o  :  option flag`;
+
+      run(['hello', '--help'], app(cmd, cmd2)).then(() => {
+        assert(stub.withArgs(helpMessage));
+        sandbox.restore();
+        done();
+      }).catch((err) => {
+        sandbox.restore();
+        done(err);
+      });
     });
   });
 

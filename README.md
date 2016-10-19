@@ -27,6 +27,9 @@ build you command line applications with assurances not found elsewhere. Reginn
 introduces zero new syntax to your application and only adds some lego-like
 functions that can be composed together to create your application.
 
+This library is written in TypeScript and is highly recommended when writing
+your applications!
+
 ## This is for me!
 ```sh
 npm install --save reginn

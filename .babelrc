@@ -1,7 +1,0 @@
-{
-  "presets": ["power-assert"],
-  "plugins": [
-    "transform-es2015-destructuring",
-    "transform-object-rest-spread"
-  ]
-}

@@ -427,18 +427,6 @@ withPromise(command).then(({ args, options }) => {
 })
 ```
 
-#### `asStream(cmd: Command): Stream<HandlerOption | App>`
-
-The `Stream` type being referred to here is a [most.js](https://gitub.com/cujojs/most) Stream.
-
-```js
-import { asStream } from 'reginn'
-
-asStream(command).observe(({ args, options }) => {
-  // do stuff
-})
-```
-
 #### `withCallback(cmd: Command, callback: (input: HandlerOption | App) => any): void`
 
 ```js

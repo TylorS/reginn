@@ -28,7 +28,8 @@ function filterFlags (commandFlags: CommandFlags, parsedFlags: CommandFlags, arg
       return true;
     }
 
-    if (flags && flags.indexOf(key) > -1) {
+    if (flags && flags.indexOf(key) > -1 ||
+        flags && flags.indexOf('--' + key) > -1) {
       if (typeOf === 'string') return Boolean(value);
       return true;
     }

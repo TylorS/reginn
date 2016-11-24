@@ -5,7 +5,7 @@ export function getCommandFlags (commands: Array<Command>): CommandFlags {
   return commands
     .filter(hasFlags)
     .map(command => command.flags)
-    .reduce(deepMerge, {} as CommandFlags);
+    .reduce(deepMerge, Object.create(null));
 }
 
 function hasFlags (command: Command): boolean {

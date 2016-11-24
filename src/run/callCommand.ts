@@ -1,6 +1,7 @@
 import { Command, CommandFlags, HandlerApp } from '../types';
 import { tail } from 'ramda';
 import { getCommandFlags } from './getCommandFlags';
+import { filterOptions } from './filterOptions';
 import { deepMerge } from '../utils';
 
 export function callCommand (argv: string[], parsedArgs: string[],
@@ -10,7 +11,7 @@ export function callCommand (argv: string[], parsedArgs: string[],
 
     if (command.commands.length > 0) {
       const commandFlags = deepMerge(flags, getCommandFlags(command.commands));
-      command.handler(createSubApplication(argv, parsedArgs, commandFlags, command, filter));
+      command.handler(createSubApplication(argv, parsedArgs, commandFlags, command));
     } else if (command.aliases && command.aliases.length > 0) {
       command.handler({ args: tail(parsedArgs), options: optionsToCamelCase(filter(command)) });
     } else {
@@ -34,10 +35,11 @@ function toCamelCase (str: string): string {
 }
 
 function createSubApplication (argv: string[], parsedArgs: string[],
-                               commandFlags: CommandFlags, command: Command,
-                               filter: (command: Command) => CommandFlags): HandlerApp {
+                               commandFlags: CommandFlags, command: Command): HandlerApp {
   const flags = argv.filter(arg => parsedArgs.indexOf(arg) === -1);
   const args = tail(parsedArgs).concat(flags);
+  const filter = filterOptions(commandFlags as any, command.flags, args);
+
   return {
     type: 'app',
     args,

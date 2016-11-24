@@ -4,5 +4,6 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.rulers": [80],
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }

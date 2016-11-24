@@ -30,9 +30,11 @@ export function deepMerge <U, V>(u: U, v: V): U & V {
 }
 
 function deepMerger (x: any, y: any) {
-  return is(Object, x) && is(Object, y)
-    ? deepMerge(x, y)
-    : y;
+  return Array.isArray(x) && Array.isArray(y)
+    ? x.concat(y)
+    : is(Object, x) && is(Object, y)
+      ? deepMerge(x, y)
+      : y;
 }
 
 // colors

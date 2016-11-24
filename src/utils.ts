@@ -1,12 +1,12 @@
 import { Command, CommandFlags, Alias, Flag } from './types';
-import { mergeWith, is, reduce } from 'ramda';
+import { mergeWith, is, reduce, union } from 'ramda';
 
 export type accumulator = { flags: CommandFlags, commands: Array<Command> }
 
 export function addFlag (seed: accumulator, flag: Flag) {
   return reduce((acc: accumulator, alias: Alias) => {
     const newFlag: any = {
-      [ flag.flagType ]: ((acc.flags as any)[flag.flagType] || []).concat(alias.name),
+      [ flag.flagType ]: union(((acc.flags as any)[flag.flagType] || []), [alias.name]),
       alias: {},
       description: {}
     };

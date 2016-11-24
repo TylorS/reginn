@@ -6,7 +6,7 @@ export type accumulator = { flags: CommandFlags, commands: Array<Command> }
 export function addFlag (seed: accumulator, flag: Flag) {
   return reduce((acc: accumulator, alias: Alias) => {
     const newFlag: any = {
-      [ flag.flagType ]: alias.name,
+      [ flag.flagType ]: ((acc.flags as any)[flag.flagType] || []).concat(alias.name),
       alias: {},
       description: {}
     };

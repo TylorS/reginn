@@ -1,6 +1,6 @@
 {
   "name": "reginn",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Composable Command Line Applications",
   "main": "lib/commonjs/index.js",
   "jsnext:main": "lib/es2015/index.js",

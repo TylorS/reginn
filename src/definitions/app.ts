@@ -7,8 +7,10 @@ export function app(...definitions: Array<Command | Flag | App>): App {
   return new ReginnApp(commands, flags);
 }
 
-function toType (acc: { flags: CommandFlags, commands: Array<Command> }, definition: Command | Flag | App):
-    { flags: CommandFlags, commands: Array<Command> } {
+function toType (
+  acc: { flags: CommandFlags, commands: Array<Command> },
+  definition: Command | Flag | App): { flags: CommandFlags, commands: Array<Command> }
+{
   if (definition.type === 'flag') {
     return addFlag(acc, definition);
   }
@@ -18,8 +20,7 @@ function toType (acc: { flags: CommandFlags, commands: Array<Command> }, definit
   }
 
   if (definition.type === 'app') {
-    deepMerge(acc.flags, definition.flags);
-    acc.commands = acc.commands.concat(definition.commands);
+    return deepMerge(acc, definition);
   }
 
   return acc;

@@ -9,8 +9,9 @@ export function parseArguments (argv: string[], flags: CommandFlags) {
   return minimist(args, flags);
 }
 
-export function splitArguments (parsedArgs: minimist.ParsedArgs):
-    [string[], { [flagName: string]: string | boolean }] {
+export function splitArguments (
+  parsedArgs: minimist.ParsedArgs
+): [string[], { [flagName: string]: string | boolean }] {
   const args = parsedArgs._;
 
   const options: { [flagName: string]: string | boolean } =

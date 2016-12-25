@@ -2,7 +2,11 @@ import { Command, CommandFlags } from '../types';
 import { splitArguments, parseArguments } from './parseArguments';
 import { deepMerge } from '../utils';
 
-export function filterOptions (options: { [key: string]: string | boolean }, flags: CommandFlags, argv: string[]) {
+export function filterOptions (
+  options: { [key: string]: string | boolean },
+  flags: CommandFlags,
+  argv: string[])
+{
   return function (command: Command) {
     const commandArgumentKeys = filterFlags(command.flags, flags, argv);
     return filterObject(commandArgumentKeys, options);

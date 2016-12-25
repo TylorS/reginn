@@ -12,7 +12,10 @@ export interface RunFn extends Handler {
   (app: App | Command | HandlerApp): Promise<HandlerApp>;
 }
 
-export const run: RunFn = function run (argv: Array<string>, command: App | Command | HandlerApp): Promise<HandlerApp> {
+export const run: RunFn = function run (
+  argv: Array<string>,
+  command: App | Command | HandlerApp): Promise<HandlerApp>
+{
   // support running `run()` without argv
   if (!Array.isArray(argv) && (argv as HandlerApp).type === 'app') {
     // subcommand support
@@ -54,7 +57,7 @@ export const run: RunFn = function run (argv: Array<string>, command: App | Comm
       flags: commandFlags,
       commands: matchedCommands,
       args,
-      options
+      options,
     });
   }
 
@@ -65,12 +68,13 @@ export const run: RunFn = function run (argv: Array<string>, command: App | Comm
     flags: commandFlags,
     commands: matchedCommands,
     args,
-    options
+    options,
   });
 } as RunFn;
 
 function display (command: Command) {
-  return `\n${command.aliases.map(displayAlias)}${command.description ? '  -  ' + command.description : ''}
+  return `\n${command.aliases.map(displayAlias)}` +
+  `${command.description ? '  -  ' + command.description : ''}
   ${displayFlags(command.flags)}\n`;
 }
 
@@ -87,11 +91,14 @@ function displayFlags (flags: CommandFlags) {
     ? flags.string
     : [flags.string as any as string];
 
-  const strings = _strings.filter(Boolean).map(x => `--${x}${aliases && aliases[x] ? ', -' + aliases[x] : ''}` +
-    `${(flags as any).description && (flags as any).description[x] ? '  :  ' + (flags as any).description[x] : ''}`);
+  const strings = _strings.filter(Boolean)
+    .map(x => `--${x}${aliases && aliases[x] ? ', -' + aliases[x] : ''}` +
+      // tslint:disable-next-line
+      `${(flags as any).description && (flags as any).description[x] ? '  :  ' + (flags as any).description[x] : ''}`);
 
   const booleans = flags.boolean
     && flags.boolean.map(x => `--${x}${aliases && aliases[x] ? ', -' + aliases[x] : ''}` +
+      // tslint:disable-next-line
       `${(flags as any).description && (flags as any).description[x] ? '  :  ' + (flags as any).description[x] : ''}`)
     || [``];
 

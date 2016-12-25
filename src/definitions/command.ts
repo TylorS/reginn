@@ -14,7 +14,7 @@ export function command(...definitions: Array<Alias | Flag | Description | Comma
   const seed: accumulator = {
     aliases: [],
     flags: {},
-    commands: []
+    commands: [],
   };
 
   const { flags, aliases, commands, description } = reduce(toType, seed, definitions);

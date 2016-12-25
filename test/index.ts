@@ -9,12 +9,21 @@ import { yellow, white } from '../src/utils';
 describe('Reginn', () => {
   describe('app', () => {
     it('should compose with other apps', () => {
-      const app1 = app(command(alias('hello'), flag('string', alias('option1'))));
-      const app2 = app(command(alias('bye'), flag('string', alias('option2'))));
+      const app1 = app(
+        command(alias('hello'), flag('string', alias('option1'))),
+        flag('string', alias('option1'))
+      );
+
+      const app2 = app(
+        command(alias('bye'), flag('string', alias('option2'))),
+        flag('string', alias('option2')),
+      );
 
       const app3 = app(app1, app2);
 
       assert(app3.commands.length === 2);
+      assert.strictEqual((app3.flags as any).string[0], 'option1');
+      assert.strictEqual((app3.flags as any).string[1], 'option2');
     });
   });
 

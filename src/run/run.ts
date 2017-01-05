@@ -17,7 +17,7 @@ export const run: RunFn = function run (
   command: App | Command | HandlerApp): Promise<HandlerApp>
 {
   // support running `run()` without argv
-  if (!Array.isArray(argv) && (argv as HandlerApp).type === 'app') {
+  if (!Array.isArray(argv) && typeof (argv as HandlerApp).type === 'string') {
     // subcommand support
     if ((argv as HandlerApp).args) {
       return run((argv as HandlerApp).args, argv);
@@ -34,7 +34,7 @@ export const run: RunFn = function run (
   if (matchedCommands.length === 0 && !(parsedArguments as any).help) {
     throw new Error(red(bold(cross)) + ' ' +
       white('Can not find command ') +
-      (parsedArguments._[0] ? red(bold(`${parsedArguments._[0]}`)) : ''));
+      (parsedArguments._[0] ? red(bold(`${parsedArguments._[0]}`)) : '- No command specified'));
   }
 
   const commandFlags = deepMerge(command.flags, getCommandFlags(matchedCommands));
